@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ASP.NET_Uni_Project.Models;
-[Table("Producers")]
-
-public class Producer
+[Table("GameSeries")]
+public class GameSerie
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -16,14 +14,12 @@ public class Producer
     [Required]
     [Column("description")]
     public string Description { get; set; }
-    [Required]
-    [Column("founded")]
-    [DataType(DataType.Date)]
-    public DateTime Founded { get; set; }
+    [Column("genre")]
+    public string? Genre { get; set; }
 
     public virtual ICollection<Game> Games { get; set; }
 
-    public Producer()
+    public GameSerie()
     {
         Games = new List<Game>();
     }
