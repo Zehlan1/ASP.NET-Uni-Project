@@ -48,8 +48,8 @@ namespace ASP.NET_Uni_Project.Controllers
         // GET: Game/Create
         public IActionResult Create()
         {
-            ViewData["GameSerieId"] = new SelectList(_context.GameSeries, "Id", "Description");
-            ViewData["ProducerId"] = new SelectList(_context.Producers, "Id", "Description");
+            ViewData["GameSerieId"] = new SelectList(_context.GameSeries, "Id", "Name");
+            ViewData["ProducerId"] = new SelectList(_context.Producers, "Id", "Name");
             return View();
         }
 
@@ -66,8 +66,8 @@ namespace ASP.NET_Uni_Project.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["GameSerieId"] = new SelectList(_context.GameSeries, "Id", "Description", game.GameSerieId);
-            ViewData["ProducerId"] = new SelectList(_context.Producers, "Id", "Description", game.ProducerId);
+            ViewData["GameSerieId"] = new SelectList(_context.GameSeries, "Id", "Name", game.GameSerieId);
+            ViewData["ProducerId"] = new SelectList(_context.Producers, "Id", "Name", game.ProducerId);
             return View(game);
         }
 
@@ -84,8 +84,8 @@ namespace ASP.NET_Uni_Project.Controllers
             {
                 return NotFound();
             }
-            ViewData["GameSerieId"] = new SelectList(_context.GameSeries, "Id", "Description", game.GameSerieId);
-            ViewData["ProducerId"] = new SelectList(_context.Producers, "Id", "Description", game.ProducerId);
+            ViewData["GameSerieId"] = new SelectList(_context.GameSeries, "Id", "Name", game.GameSerieId);
+            ViewData["ProducerId"] = new SelectList(_context.Producers, "Id", "Name", game.ProducerId);
             return View(game);
         }
 
@@ -121,8 +121,8 @@ namespace ASP.NET_Uni_Project.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["GameSerieId"] = new SelectList(_context.GameSeries, "Id", "Description", game.GameSerieId);
-            ViewData["ProducerId"] = new SelectList(_context.Producers, "Id", "Description", game.ProducerId);
+            ViewData["GameSerieId"] = new SelectList(_context.GameSeries, "Id", "Name", game.GameSerieId);
+            ViewData["ProducerId"] = new SelectList(_context.Producers, "Id", "Name", game.ProducerId);
             return View(game);
         }
 

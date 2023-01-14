@@ -47,7 +47,7 @@ namespace ASP.NET_Uni_Project.Controllers
         // GET: Auction/Create
         public IActionResult Create()
         {
-            ViewData["GameId"] = new SelectList(_context.Games, "Id", "Description");
+            ViewData["GameId"] = new SelectList(_context.Games, "Id", "Title");
             return View();
         }
 
@@ -64,7 +64,7 @@ namespace ASP.NET_Uni_Project.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["GameId"] = new SelectList(_context.Games, "Id", "Description", auction.GameId);
+            ViewData["GameId"] = new SelectList(_context.Games, "Id", "Title", auction.GameId);
             return View(auction);
         }
 
@@ -81,7 +81,7 @@ namespace ASP.NET_Uni_Project.Controllers
             {
                 return NotFound();
             }
-            ViewData["GameId"] = new SelectList(_context.Games, "Id", "Description", auction.GameId);
+            ViewData["GameId"] = new SelectList(_context.Games, "Id", "Title", auction.GameId);
             return View(auction);
         }
 
@@ -117,7 +117,7 @@ namespace ASP.NET_Uni_Project.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["GameId"] = new SelectList(_context.Games, "Id", "Description", auction.GameId);
+            ViewData["GameId"] = new SelectList(_context.Games, "Id", "Name", auction.GameId);
             return View(auction);
         }
 

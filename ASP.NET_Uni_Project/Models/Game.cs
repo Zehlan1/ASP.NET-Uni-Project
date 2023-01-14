@@ -19,11 +19,13 @@ public class Game
     [Column("release")]
     public DateTime Release { get; set; }
 
+    [Display(Name = "Producer")]
     public int ProducerId { get; set; }
-    public virtual Producer Producer { get; set; }
+    public virtual Producer? Producer { get; set; }
 
+    [Display(Name = "Game Series")]
     public int GameSerieId { get; set; }
-    public virtual GameSerie GameSerie { get; set; }
+    public virtual GameSerie? GameSerie { get; set; }
 
     public virtual ICollection<Auction> Auctions { get; set; }
 

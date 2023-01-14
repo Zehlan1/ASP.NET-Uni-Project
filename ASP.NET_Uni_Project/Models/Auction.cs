@@ -15,28 +15,31 @@ public class Auction
     [Required]
     [Column("description")]
     public string Description { get; set; }
-    [Required]
-    [Column("isActive")]
     [HiddenInput]
-    public bool IsActive { get; set; }
-    [Column("currentBid")]
+    [Display(Name = "Active")]
+    public bool? IsActive { get; set; } = true;
     [HiddenInput]
-    public decimal CurrentBid { get; set; }
+    public decimal? CurrentBid { get; set; }
     [Required]
     [Column("startingBid")]
+    [Display(Name = "Starting bid")]
     public decimal StartingBid { get; set; }
     [Column("winningBid")]
     [HiddenInput]
+    [Display(Name = "Winning bid")]
     public decimal? WinningBid { get; set; }
     [Required]
     [Column("buyout")]
+    [Display(Name = "Buyout price")]
     public decimal Buyout { get; set; }
     //public string Creator { get; set; }
     [Required]
     [Column("closeDate")]
+    [Display(Name = "Auction closes")]
     public DateTime CloseDate { get; set; }
 
+    [Display(Name = "Game")]
     public int GameId { get; set; }
-    public virtual Game Game { get; set; }
+    public virtual Game? Game { get; set; }
 }
 

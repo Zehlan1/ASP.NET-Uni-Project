@@ -4,10 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Auctions</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Create New Auction</a>
 </p>
 <table class="table">
     <thead>
@@ -19,13 +19,7 @@
                 @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IsActive)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CurrentBid)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StartingBid)
+                @Html.DisplayNameFor(model => model.Game)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.WinningBid)
@@ -35,9 +29,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CloseDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Game)
             </th>
             <th></th>
         </tr>
@@ -52,25 +43,21 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IsActive)
+                @Html.DisplayFor(modelItem => item.Game.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CurrentBid)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartingBid)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.WinningBid)
+                @if (item.WinningBid is null){
+                    @Html.DisplayFor(modelItem => item.StartingBid);
+                } else {
+                    @Html.DisplayFor(modelItem => item.WinningBid);
+                }
+                @*@Html.DisplayFor(modelItem => item.WinningBid)*@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Buyout)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CloseDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Game.Description)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

@@ -10,6 +10,7 @@ public class GameSerie
     public int Id { get; set; }
     [Required]
     [Column("name")]
+    [Display(Name = "Game Series")]
     public string Name { get; set; }
     [Required]
     [Column("description")]
