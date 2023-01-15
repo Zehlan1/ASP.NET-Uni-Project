@@ -9,7 +9,7 @@ public class AppDbContext: DbContext
     public DbSet<GameSerie> GameSeries { get; set; }
     public DbSet<Auction> Auctions { get; set; }
 
-    public AppDbContext(DbContextOptions options) : base(options)
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
     }
 
