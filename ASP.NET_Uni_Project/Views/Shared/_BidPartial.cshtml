@@ -1,0 +1,24 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@model ASP.NET_Uni_Project.Models.Auction
+
+@inject UserManager<IdentityUser> UserManager
+
+<ul class="navbar-nav">
+    @if (TempData["notice"] != null)
+    {
+        <p>@TempData["notice"]</p>
+    }
+    <form asp-action="Bid">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" value="@UserManager.GetUserName(User)" asp-for="Winner" />
+        <div class="form-group">
+            <input asp-for="WinningBid" class="form-control" />
+            <span asp-validation-for="WinningBid" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Bid" class="btn btn-primary" />
+        </div>
+    </form>
+</ul>

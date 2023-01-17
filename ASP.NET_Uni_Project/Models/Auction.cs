@@ -18,21 +18,23 @@ public class Auction
     [HiddenInput]
     [Display(Name = "Active")]
     public bool? IsActive { get; set; } = true;
-    [HiddenInput]
-    public decimal? CurrentBid { get; set; }
     [Required]
     [Column("startingBid")]
     [Display(Name = "Starting bid")]
     public decimal StartingBid { get; set; }
     [Column("winningBid")]
-    [HiddenInput]
     [Display(Name = "Winning bid")]
     public decimal? WinningBid { get; set; }
     [Required]
     [Column("buyout")]
     [Display(Name = "Buyout price")]
     public decimal Buyout { get; set; }
-    //public string Creator { get; set; }
+    [HiddenInput]
+    [Display(Name = "Created by")]
+    public string? Creator { get; set; }
+    [HiddenInput]
+    [Display(Name = "Winner")]
+    public string? Winner { get; set; }
     [Required]
     [Column("closeDate")]
     [Display(Name = "Auction closes")]

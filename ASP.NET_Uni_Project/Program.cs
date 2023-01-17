@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Identity;
 using ASP.NET_Uni_Project.Data;
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("IdentityDbContextConnection") ?? throw new InvalidOperationException("Connection string 'IdentityDbContextConnection' not found.");
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -14,7 +13,7 @@ builder.Services.AddDbContext<AppDbContext>(
 builder.Services.AddDbContext<IdentityDbContext>(
     options => options.UseSqlServer(builder.Configuration["Data:AppIdentity:ConnectionString"])
 );
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<IdentityDbContext>()
     .AddDefaultUI()
     .AddDefaultTokenProviders();

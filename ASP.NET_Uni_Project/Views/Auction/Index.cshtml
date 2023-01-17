@@ -1,8 +1,11 @@
-﻿@model IEnumerable<ASP.NET_Uni_Project.Models.Auction>
+﻿@using Microsoft.AspNetCore.Identity
+@model IEnumerable<ASP.NET_Uni_Project.Models.Auction>
 
 @{
     ViewData["Title"] = "Index";
 }
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 
 <h1>Auctions</h1>
 
@@ -30,12 +33,20 @@
             <th>
                 @Html.DisplayNameFor(model => model.CloseDate)
             </th>
+            @if(User.IsInRole("admin")){
+                <th>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </th>
+            }
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+        if ((User.IsInRole("admin") == false) && (item.IsActive == false)){
+                continue;
+        }
+            <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
@@ -51,7 +62,6 @@
                 } else {
                     @Html.DisplayFor(modelItem => item.WinningBid);
                 }
-                @*@Html.DisplayFor(modelItem => item.WinningBid)*@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Buyout)
@@ -59,6 +69,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.CloseDate)
             </td>
+            @if (User.IsInRole("admin"))
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsActive)
+                </td>
+            }
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |

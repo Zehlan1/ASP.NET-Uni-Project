@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ASP.NET_Uni_Project.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace ASP.NET_Uni_Project.Controllers
 {
@@ -46,6 +48,7 @@ namespace ASP.NET_Uni_Project.Controllers
         }
 
         // GET: Game/Create
+        [Authorize]
         public IActionResult Create()
         {
             ViewData["GameSerieId"] = new SelectList(_context.GameSeries, "Id", "Name");
@@ -72,6 +75,7 @@ namespace ASP.NET_Uni_Project.Controllers
         }
 
         // GET: Game/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Games == null)
@@ -127,6 +131,7 @@ namespace ASP.NET_Uni_Project.Controllers
         }
 
         // GET: Game/Delete/5
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Games == null)

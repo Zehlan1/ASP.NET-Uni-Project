@@ -1,8 +1,10 @@
-﻿@model ASP.NET_Uni_Project.Models.Auction
+﻿@using Microsoft.AspNetCore.Identity
+@model ASP.NET_Uni_Project.Models.Auction
 
 @{
     ViewData["Title"] = "Details";
 }
+@inject UserManager<IdentityUser> UserManager
 
 <h1>Auction Details</h1>
 
@@ -45,6 +47,12 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.WinningBid)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Winner)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Winner)
+        </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Buyout)
         </dt>
@@ -58,6 +66,11 @@
             @Html.DisplayFor(model => model.CloseDate)
         </dd>
     </dl>
+    <hr />
+    <partial name="_BidPartial" />
+    <hr />
+    <partial name="_BuyPartial" />
+    <hr />
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
