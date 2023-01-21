@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASP.NET_Uni_Project", "ASP.NET_Uni_Project\ASP.NET_Uni_Project.csproj", "{E6B5C69C-3293-4F78-85DD-5E21A5935210}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASP.NET_Uni_Project", "ASP.NET_Uni_Project\ASP.NET_Uni_Project.csproj", "{E6B5C69C-3293-4F78-85DD-5E21A5935210}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
