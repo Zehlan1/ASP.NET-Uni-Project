@@ -72,7 +72,7 @@ namespace ASP.NET_Uni_Project.Models
         }
         public ICollection<Auction> FindAll()
         {
-            return _context.Auctions.ToList();
+            return _context.Auctions.Include(a => a.Game).ToList();
         }
         public ICollection<Auction> FindByUser(string creator)
         {
