@@ -2,13 +2,17 @@ using ASP.NET_Uni_Project.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using ASP.NET_Uni_Project.Data;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IAuctionService, AuctionService>();
-builder.Services.AddScoped<IAuctionMenu, AuctionMenu>();
+builder.Services.AddMvc().AddJsonOptions(o =>
+{
+    o.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+});
 builder.Services.AddDbContext<AppDbContext>(
     options => options.UseSqlServer(builder.Configuration["Data:Connection"])
 );
@@ -22,9 +26,6 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.Sign
 builder.Services.AddMemoryCache();
 builder.Services.AddSession();
 builder.Services.AddRazorPages();
-
-//builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-//    .AddEntityFrameworkStores<IdentityDbContext>();
 
 var app = builder.Build();
 

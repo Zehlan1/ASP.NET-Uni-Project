@@ -7,31 +7,31 @@ namespace ASP.NET_Uni_Project.Controllers
     [ApiController]
     public class AuctionsController : ControllerBase
     {
-        private IAuctionMenu _auctionMenu;
-        public AuctionsController(IAuctionMenu auctionMenu)
+        private IAuctionService _auctionService;
+        public AuctionsController(IAuctionService auctionService)
         {
-            _auctionMenu = auctionMenu;
+            _auctionService = auctionService;
         }
 
         //GET api/aucitons
         [HttpGet]
         public IEnumerable<Auction> Get()
         {
-            return _auctionMenu.FindAll();
+            return _auctionService.FindAll();
         }
 
         //GET api/auctions/{Id}
         [HttpGet("{id}", Name = "Get")]
         public ActionResult<Auction> Get(int id)
         {
-            return _auctionMenu.FindById(id);
+            return _auctionService.FindById(id);
         }
 
         //POST api/auctions/
         [HttpPost]
         public ActionResult Post([FromBody] Auction auction)
         {
-            _auctionMenu.Create(auction);
+            _auctionService.Create(auction);
             return Created("", auction);
         }
 
@@ -39,7 +39,7 @@ namespace ASP.NET_Uni_Project.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var result = _auctionMenu.Delete(id);
+            var result = _auctionService.Delete(id);
             if (result == null)
             {
                 return NotFound();
@@ -52,18 +52,11 @@ namespace ASP.NET_Uni_Project.Controllers
         public ActionResult Put(int id, [FromBody] Auction auction)
         {
             auction.Id = (int)id;
-            if (_auctionMenu.Update(auction))
+            if (_auctionService.Update(auction))
             {
                 return BadRequest();
             }
             return NoContent();
         }
-
-        //GET api/auctions/{name}
-        //[HttpGet("{name}", Name = "GetByUser")]
-        //public IEnumerable<Auction> GetByUser(string name)
-        //{
-        //    return _auctionMenu.FindByUser(name);
-        //}
     }
 }
