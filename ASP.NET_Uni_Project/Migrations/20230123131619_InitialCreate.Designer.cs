@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ASP.NETUniProject.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230113182108_Version2_0")]
-    partial class Version20
+    [Migration("20230123131619_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,8 +41,8 @@ namespace ASP.NETUniProject.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("closeDate");
 
-                    b.Property<decimal?>("CurrentBid")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("Creator")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -64,6 +64,9 @@ namespace ASP.NETUniProject.Migrations
                         .HasColumnType("decimal(18,2)")
                         .HasColumnName("startingBid");
 
+                    b.Property<string>("Winner")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<decimal?>("WinningBid")
                         .HasColumnType("decimal(18,2)")
                         .HasColumnName("winningBid");
@@ -73,6 +76,90 @@ namespace ASP.NETUniProject.Migrations
                     b.HasIndex("GameId");
 
                     b.ToTable("Auctions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Buyout = 200m,
+                            CloseDate = new DateTime(2023, 6, 14, 15, 0, 0, 0, DateTimeKind.Unspecified),
+                            Creator = "Janusz",
+                            Description = "Okazało sie że syn już ma",
+                            GameId = 1,
+                            IsActive = true,
+                            Name = "Wiedźmak Trzy TANIO",
+                            StartingBid = 20m,
+                            Winner = "Paweł",
+                            WinningBid = 45m
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Buyout = 200m,
+                            CloseDate = new DateTime(2023, 2, 14, 17, 0, 0, 0, DateTimeKind.Unspecified),
+                            Creator = "Janusz",
+                            Description = "Nigdy nie otwierana edycja standardowa.",
+                            GameId = 2,
+                            IsActive = true,
+                            Name = "Fallout 2 nie otwierana",
+                            StartingBid = 20m
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Buyout = 320m,
+                            CloseDate = new DateTime(2023, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Creator = "Marian",
+                            Description = "Fifa 21 używana, posiada bonus przedpremierowy!",
+                            GameId = 5,
+                            IsActive = true,
+                            Name = "Graj jako Wielki Polak Robert Lewandowski - Fifa 21",
+                            StartingBid = 20m,
+                            Winner = "Bogumiła",
+                            WinningBid = 90m
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Buyout = 400m,
+                            CloseDate = new DateTime(2023, 6, 14, 15, 0, 0, 0, DateTimeKind.Unspecified),
+                            Creator = "Ubuwewue Aguweuwe Osass",
+                            Description = "Wersja pudełkowa z podpisem twórców, nie otwierana.",
+                            GameId = 6,
+                            IsActive = true,
+                            Name = "!HIT! The Outer Worlds Folia !HIT!",
+                            StartingBid = 120m,
+                            Winner = "Gigachad",
+                            WinningBid = 250m
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Buyout = 150m,
+                            CloseDate = new DateTime(2023, 6, 14, 15, 0, 0, 0, DateTimeKind.Unspecified),
+                            Creator = "Michał",
+                            Description = "Kupiłem sobie nową część",
+                            GameId = 3,
+                            IsActive = false,
+                            Name = "Fallout 3 do sprzedania",
+                            StartingBid = 30m,
+                            Winner = "xXxRealGamerxXx",
+                            WinningBid = 150m
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Buyout = 240m,
+                            CloseDate = new DateTime(2023, 6, 14, 15, 0, 0, 0, DateTimeKind.Unspecified),
+                            Creator = "Dingo Game Shop",
+                            Description = "Nowa gra z serii Wiedźmin. Nie otwierana!",
+                            GameId = 1,
+                            IsActive = true,
+                            Name = "Wiedźmin 3 Nie Otwierana",
+                            StartingBid = 80m,
+                            Winner = "TheRealGeraltOfRivia",
+                            WinningBid = 110m
+                        });
                 });
 
             modelBuilder.Entity("ASP.NET_Uni_Project.Models.Game", b =>

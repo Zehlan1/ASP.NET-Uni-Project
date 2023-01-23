@@ -80,11 +80,12 @@ namespace ASP.NETUniProject.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    isActive = table.Column<bool>(type: "bit", nullable: false),
-                    currentBid = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: true),
                     startingBid = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     winningBid = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     buyout = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Creator = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Winner = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     closeDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     GameId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -132,6 +133,19 @@ namespace ASP.NETUniProject.Migrations
                     { 4, "Create your favourite football team.", 2, 4, new DateTime(2008, 6, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), "Fifa 09" },
                     { 5, "Collect all your favourite players in the new FUT mode!", 2, 4, new DateTime(2020, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "Fifa 21" },
                     { 6, "Space exploration/FPS made by the creators of Fallout", 4, 2, new DateTime(2019, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), "The Outer Worlds" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Auctions",
+                columns: new[] { "Id", "buyout", "closeDate", "Creator", "description", "GameId", "IsActive", "name", "startingBid", "Winner", "winningBid" },
+                values: new object[,]
+                {
+                    { 1, 200m, new DateTime(2023, 6, 14, 15, 0, 0, 0, DateTimeKind.Unspecified), "Janusz", "Okazało sie że syn już ma", 1, true, "Wiedźmak Trzy TANIO", 20m, "Paweł", 45m },
+                    { 2, 200m, new DateTime(2023, 2, 14, 17, 0, 0, 0, DateTimeKind.Unspecified), "Janusz", "Nigdy nie otwierana edycja standardowa.", 2, true, "Fallout 2 nie otwierana", 20m, null, null },
+                    { 3, 320m, new DateTime(2023, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "Marian", "Fifa 21 używana, posiada bonus przedpremierowy!", 5, true, "Graj jako Wielki Polak Robert Lewandowski - Fifa 21", 20m, "Bogumiła", 90m },
+                    { 4, 400m, new DateTime(2023, 6, 14, 15, 0, 0, 0, DateTimeKind.Unspecified), "Ubuwewue Aguweuwe Osass", "Wersja pudełkowa z podpisem twórców, nie otwierana.", 6, true, "!HIT! The Outer Worlds Folia !HIT!", 120m, "Gigachad", 250m },
+                    { 5, 150m, new DateTime(2023, 6, 14, 15, 0, 0, 0, DateTimeKind.Unspecified), "Michał", "Kupiłem sobie nową część", 3, false, "Fallout 3 do sprzedania", 30m, "xXxRealGamerxXx", 150m },
+                    { 6, 240m, new DateTime(2023, 6, 14, 15, 0, 0, 0, DateTimeKind.Unspecified), "Dingo Game Shop", "Nowa gra z serii Wiedźmin. Nie otwierana!", 1, true, "Wiedźmin 3 Nie Otwierana", 80m, "TheRealGeraltOfRivia", 110m }
                 });
 
             migrationBuilder.CreateIndex(

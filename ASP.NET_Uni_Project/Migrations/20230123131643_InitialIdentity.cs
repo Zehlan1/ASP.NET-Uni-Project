@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace ASP.NETUniProject.Migrations
 {
     /// <inheritdoc />
@@ -154,6 +156,37 @@ namespace ASP.NETUniProject.Migrations
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { "1", "dc683997-3426-4f1e-9ef6-167be38bfdb2", "admin", "ADMIN" },
+                    { "2", "bceca40e-6ec8-4d16-bad7-04c2050502c7", "user", "USER" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[,]
+                {
+                    { "023d586c-fdba-4fab-8196-90685b128664", 0, "eabd687e-3744-40f3-a513-35b7074f3097", "test1@fake.fake", true, false, null, "TEST1@FAKE.FAKE", "TEST1@FAKE.FAKE", "AQAAAAEAACcQAAAAEILcjt9IZg9oBFSkmhnjtT/sY+PK/BumF0T4nLeTkLG7u4YMBE/WilN/iN5ur5VD6A==", null, false, "46e0fb84-8a28-433b-a856-b3ac1bc924a6", false, "test1@fake.fake" },
+                    { "6da4ec6e-fc74-4846-96b6-68049794e89d", 0, "4f9ed0d4-2810-4022-b2fc-09a274e0d1e1", "test3@fake.fake", true, false, null, "TEST3@FAKE.FAKE", "TEST3@FAKE.FAKE", "AQAAAAEAACcQAAAAEDRiFJmyfssH+hoCV3ChEAktUcqRPa8iLXylBiWlVohWfSRcZx6KKy1yz4ypv3cjnA==", null, false, "46a3d956-f96d-4c61-8d79-198a80d4e25d", false, "test3@fake.fake" },
+                    { "90f50695-2d66-47bf-ac04-820ee7dc807d", 0, "65a6dc9c-62b8-453d-82e5-8cca2d60bc0b", "admin1@fake.fake", true, false, null, "ADMIN1@FAKE.FAKE", "ADMIN1@FAKE.FAKE", "AQAAAAEAACcQAAAAEH58QBwrBJrPMcWCjbjOfC6ZlF/kQkzHtqLi4gSVkwVIyMPW+2vRmzgwG2UjnD7yRw==", null, false, "fdc3a73a-ab1a-48f1-bbc6-2badecf084b3", false, "admin1@fake.fake" },
+                    { "e8d37b64-c354-41bd-ac1d-93e8e73b1b8f", 0, "63cb5bf5-b96e-48e4-ba4d-b314d358e676", "test2@fake.fake", true, false, null, "TEST2@FAKE.FAKE", "TEST2@FAKE.FAKE", "AQAAAAEAACcQAAAAEMhbzbFxdU16IVnrWHkPYkmlJgnTFti+nNQLKUF9QXNpchF2FfaIbH0G82q9Q2yFdQ==", null, false, "61f10ef0-5655-4621-aa48-691048c1e7df", false, "test2@fake.fake" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[,]
+                {
+                    { "2", "023d586c-fdba-4fab-8196-90685b128664" },
+                    { "2", "6da4ec6e-fc74-4846-96b6-68049794e89d" },
+                    { "1", "90f50695-2d66-47bf-ac04-820ee7dc807d" },
+                    { "2", "e8d37b64-c354-41bd-ac1d-93e8e73b1b8f" }
                 });
 
             migrationBuilder.CreateIndex(
