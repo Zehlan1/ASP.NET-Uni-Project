@@ -35,5 +35,13 @@ public class AppDbContext: DbContext
             new Game() {Id = 5, Title = "Fifa 21", Description = "Collect all your favourite players in the new FUT mode!", GameSerieId = 2, ProducerId = 4, Release = DateTime.Parse("2020-03-03")},
             new Game() {Id = 6, Title = "The Outer Worlds", Description = "Space exploration/FPS made by the creators of Fallout", GameSerieId = 4, ProducerId = 2, Release = DateTime.Parse("2019-11-26")}
             );
+        modelBuilder.Entity<Auction>().HasData(
+            new Auction() { Id = 1, Name = "Wiedźmak Trzy TANIO", Description = "Okazało sie że syn już ma", IsActive = true, StartingBid = 20, WinningBid = 45, Buyout = 200, Creator = "Janusz", Winner = "Paweł", GameId = 1,CloseDate = DateTime.Parse("2023-06-14 15:00:00") },
+            new Auction() { Id = 2, Name = "Fallout 2 nie otwierana", Description = "Nigdy nie otwierana edycja standardowa.", IsActive = true, StartingBid = 20, Buyout = 200, Creator = "Janusz", GameId = 2, CloseDate = DateTime.Parse("2023-02-14 17:00:00") },
+            new Auction() { Id = 3, Name = "Graj jako Wielki Polak Robert Lewandowski - Fifa 21", Description = "Fifa 21 używana, posiada bonus przedpremierowy!", IsActive = true, StartingBid = 20, WinningBid = 90, Buyout = 320, Creator = "Marian", Winner = "Bogumiła", GameId = 5, CloseDate = DateTime.Parse("2023-01-31 00:00:00") },
+            new Auction() { Id = 4, Name = "!HIT! The Outer Worlds Folia !HIT!", Description = "Wersja pudełkowa z podpisem twórców, nie otwierana.", IsActive = true, StartingBid = 120, WinningBid = 250, Buyout = 400, Creator = "Ubuwewue Aguweuwe Osass", Winner = "Gigachad", GameId = 6, CloseDate = DateTime.Parse("2023-06-14 15:00:00") },
+            new Auction() { Id = 5, Name = "Fallout 3 do sprzedania", Description = "Kupiłem sobie nową część", IsActive = false, StartingBid = 30, WinningBid = 150, Buyout = 150, Creator = "Michał", Winner = "xXxRealGamerxXx", GameId = 3, CloseDate = DateTime.Parse("2023-06-14 15:00:00") },
+            new Auction() { Id = 6, Name = "Wiedźmin 3 Nie Otwierana", Description = "Nowa gra z serii Wiedźmin. Nie otwierana!", IsActive = true, StartingBid = 80, WinningBid = 110, Buyout = 240, Creator = "Dingo Game Shop", Winner = "TheRealGeraltOfRivia", GameId = 1, CloseDate = DateTime.Parse("2023-06-14 15:00:00") }
+            );
     }
 }
