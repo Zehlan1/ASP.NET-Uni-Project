@@ -41,7 +41,7 @@ public class AppDbContext: DbContext
             new Auction() { Id = 3, Name = "Graj jako Wielki Polak Robert Lewandowski - Fifa 21", Description = "Fifa 21 używana, posiada bonus przedpremierowy!", IsActive = true, StartingBid = 20, WinningBid = 90, Buyout = 320, Creator = "Marian", Winner = "Bogumiła", GameId = 5, CloseDate = DateTime.Parse("2023-01-31 00:00:00") },
             new Auction() { Id = 4, Name = "!HIT! The Outer Worlds Folia !HIT!", Description = "Wersja pudełkowa z podpisem twórców, nie otwierana.", IsActive = true, StartingBid = 120, WinningBid = 250, Buyout = 400, Creator = "Ubuwewue Aguweuwe Osass", Winner = "Gigachad", GameId = 6, CloseDate = DateTime.Parse("2023-09-22 19:59:59") },
             new Auction() { Id = 5, Name = "Fallout 3 do sprzedania", Description = "Kupiłem sobie nową część", IsActive = false, StartingBid = 30, WinningBid = 150, Buyout = 150, Creator = "Michał", Winner = "xXxRealGamerxXx", GameId = 3, CloseDate = DateTime.Parse("2023-06-14 15:00:00") },
-            new Auction() { Id = 6, Name = "Wiedźmin 3 Nie Otwierana", Description = "Nowa gra z serii Wiedźmin. Nie otwierana!", IsActive = true, StartingBid = 80, WinningBid = 110, Buyout = 240, Creator = "Dingo Game Shop", Winner = "TheRealGeraltOfRivia", GameId = 1, CloseDate = DateTime.Parse("2023-01-21 120:00:00") }
+            new Auction() { Id = 6, Name = "Wiedźmin 3 Nie Otwierana", Description = "Nowa gra z serii Wiedźmin. Nie otwierana!", IsActive = true, StartingBid = 80, WinningBid = 110, Buyout = 240, Creator = "Dingo Game Shop", Winner = "TheRealGeraltOfRivia", GameId = 1, CloseDate = DateTime.Parse("2023-01-21 12:00:00") }
             );
     }
 }
