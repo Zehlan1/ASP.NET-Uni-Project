@@ -1,22 +1,22 @@
-# Dom Aukcyjny Gier Wideo
+# Videogame Auction House
 
-Aplikacja pozwala odwiedzającym przeglądać różne gry komputerowe, serie do jakich należą oraz ich wydawców. Zalogowani użytkownicy mogą natomiast dodawać wyżej wymienione elementy oraz tworzyć z nimi aukcje, mogą też licytować w aktywnych aukcjach oraz wykupić je całkowicie.
-Konto administratora ma możliwość usuwania oraz edycji aukcji.
+App allows visitors to browse various video games, series they belong to and thier publishers. Users that are logged in can add mentioned before elements and create auctions with them, they can also bid in these auctions or buy them out completely.
+Admin account can delete and edit said elements.
 
-## Lista Funkcji
+## App Functions
 
-- Tworzenie aukcji oraz wpisów o grach, studiach i seriach gier
-- Wyświetlenie szczegółów, edycja oraz usunięcie wpisów
-- Rejestracja oraz Logowanie użytkowników
-- Licytacja oraz wykup w aktywnych aukcjach
-- API pozwalające na odczyt i modyfikację istniejących aukcji
+- Creating Auctions, games, publishers and videogame series
+- Displaying details, editing and deleting these elements
+- Registration and Login features
+- Bidding and Buyout in auctions
+- API allowing the creation and manipulation of auctions
 
-# Instalacja oraz wymagane pakiety
+# Installation and required packages
 
-Wszystkie pakiety zostały zainstalowane za pomocą **NuGet**.
-Aplikacja korzysta z zewnętrznej bazy danych, w tym przypadku **Microsoft SQL Server**
+All packages were installed with the use of **NuGet**.
+App uses an external database, in this case **Microsoft SQL Server**
 
-## Pakiety
+## Packages
 
 - Microsoft.AspNetCore.Identity.EntityFrameworkCore
 - Microsoft.AspNetCore.Identity.UI
@@ -27,27 +27,27 @@ Aplikacja korzysta z zewnętrznej bazy danych, w tym przypadku **Microsoft SQL S
 - Microsoft.VisualStudio.Web.CodeGeneration.Design
 - xunit
 
-## Instalacja
+## Installation
 
-- W pliku **appsettings.json** przy polach **DATA SOURCE=** oraz **Server=** wpisujemy adres serwera którego będziemy używać (ustawione początkowo na **localhost**)
-- Otwieramy terminal projektu
-- Uruchamiamy komendę: **dotnet ef database update --context AppDbContext**
-Utworzy ona w bazie danych tabelę z Aukcjami, Grami, Producentami i Seriami Gier
-- Uruchamiamy komendę: **dotnet ef database update --context IdentityDbContext**
-Utworzy ona w bazie danych tabelę z Użytkownikami
-- W sytuacji gdy powyższe dwie komendy nie powiodą się należy użyć komend:
+- In the file **appsettings.json** next to fields **DATA SOURCE=** and **Server=** type the address of the database server which will be used (**localhost** by default)
+- Open project terminal
+- Run the command: **dotnet ef database update --context AppDbContext**
+It createds the following tables in the database: Auctions, Games, Producers adn GameSeries
+- Run the command: **dotnet ef database update --context IdentityDbContext**
+It createds all the Identity tables in the database
+- In case any of the upper two commands doesn't work, use the following:
 **dotnet ef migrations add InitialCreate --context AppDbContext**
 **dotnet ef migrations add InitialIdentity --context IdentityDbContext**
-oraz ponownie użyć początkowe komendy
+and use the first two commands again.
 
-# Dostępni użytkownicy
+# Aviailable Users
 
-## Administratorzy
+## Admins
 
-- **Login:** admin1@fake.fake **Hasło:** AdminPassword1!
+- **Login:** admin1@fake.fake **Password:** AdminPassword1!
 
-## Użytkownicy
+## Users
 
-- **Login:** test1@fake.fake **Hasło:** Password1!
-- **Login:** test2@fake.fake **Hasło:** Password2!
-- **Login:** test3@fake.fake **Hasło:** Password3!
+- **Login:** test1@fake.fake **Password:** Password1!
+- **Login:** test2@fake.fake **Password:** Password2!
+- **Login:** test3@fake.fake **Password:** Password3!
